@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+}
+
+.sideBar {
+  width: 20%;
+  height: 100%;
+  background: #026722ea;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+}
+
+.sideHeading {
+  font-size: 2rem;
+  margin: 2rem 0;
+  font-weight: 800;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#todo_heading {
+  height: 50%;
+  position: relative;
+  overflow: auto;
+}
+
+.displayBoard {
+  background: #fff;
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+}
+
+.icon:hover {
+  transition: 0.3s ease-in-out;
+  scale: 130%;
+}
+
+.todo_heading {
+  width: 96%;
+  height: 80%;
+  margin-top: 6rem;
+}
+
+.modal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: 1s;
+  z-index: -1;
+}
+
+.container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 20%;
+
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transition: 1.5s ease-in-out;
+}
+
+.showModal {
+  opacity: 1;
+  z-index: 0;
+}
+.showContainer {
+  top: 50%;
+}
+
+#Todo input[type="text"],
+#Todo input[type="email"],
+#Todo input[type="tel"],
+#Todo input[type="url"],
+#Todo textarea,
+#Todo button[type="submit"] {
+  font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+#form {
+  width: 100%;
+  height: 100%;
+}
+
+#Todo {
+  background: #f9f9f9;
+  padding: 25px;
+  margin: 50px 0;
+  border-radius: 2rem;
+  box-shadow: 0 0 10px 3px #a4a4a4;
+}
+
+#Todo h3 {
+  color: #026722ea;
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#Todo input[type="text"],
+#Todo textarea {
+  width: 95%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#Todo input[type="text"]:hover,
+#Todo textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#Todo textarea {
+  height: 100px;
+  max-width: 95%;
+  resize: none;
+}
+
+#Todo button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #026722ea;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  margin: 0 2rem;
+}
+
+#Todo button[type="submit"]:hover {
+  background: #014a18ea;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#Todo button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#Todo input:focus,
+#Todo textarea:focus {
+  outline: 0;
+  border: 1px solid #999;
+}
+
+.close-container {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 3.7rem;
+  right: 1.7rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.close-container:hover {
+  scale: 120%;
+}
+
+.button {
+  display: flex;
+}
+
+#close {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #d22203ea;
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  margin: 0 2rem;
+}
+
+#close:hover {
+  background: #5c0701ea;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#close:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #015b1eea;
+  margin-top: 4rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#tableContainer {
+  width: 70%;
+  height: 65%;
+  overflow-y: auto;
+
+  margin: 4rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+}
+
+th {
+  background-color: #1a6c1d;
+  color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 1.7rem;
+  position: sticky;
+  top: 0;
+}
+
+td {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #3e3e3edb;
+  font-weight: 700;
+}
+tr:nth-child(odd) {
+  background: #dbdbdb;
+}
+
+td > div {
+  color: #aaa;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+td > div > button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.edit:hover {
+  scale: 130%;
+  transition: 0.2s ease-in;
+}
+.delete:hover {
+  transition: 0.2s ease-in;
+  scale: 130%;
+}
+
+th:first-child {
+  border-radius: 15% 0 0 15%;
+}
+th:last-child {
+  border-radius: 0 15% 15% 0;
+}
+td:first-child {
+  border-radius: 15% 0 0 15%;
+}
+td:last-child {
+  border-radius: 0 15% 15% 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.8rem;
+  cursor: pointer;
+  color: #f2f2f2db;
+}
+
+.listButton:hover {
+  color: #d3d3d3db;
+}
+
+.listButton {
+  border: none;
+  background: transparent;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.8rem;
+  cursor: pointer;
+  color: #f2f2f2db;
+}
