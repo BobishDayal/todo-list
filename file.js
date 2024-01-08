@@ -74,6 +74,7 @@ function showModal() {
 function closeModal() {
   modal.classList.remove("showModal");
   container.classList.remove("showContainer");
+  clearInputs();
 }
 
 //this should stay here otherwise it won't work
