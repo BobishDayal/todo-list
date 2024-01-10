@@ -10,7 +10,12 @@ const addTodoBtn = document.getElementById("addTodo");
 const modal = document.querySelector(".modal");
 const container = document.querySelector(".container");
 
-let tempTodo = [];
+let tempTodo = [
+  {
+    title: "check",
+    detail: "check",
+  },
+];
 const clickHandler = () => {
   console.log("hello");
 };
@@ -47,6 +52,8 @@ tableContainer.innerHTML = generateTable(tempTodo);
 
 TodoList.innerHTML = generateList(tempTodo);
 
+reRunCode();
+
 let todoForm = document.getElementById("Todo");
 
 ///adding todo to the list
@@ -71,9 +78,7 @@ todoForm.addEventListener("submit", (e) => {
     tableContainer.innerHTML = generateTable(tempTodo);
     TodoList.innerHTML = generateList(tempTodo);
 
-    const listButton = document.querySelectorAll(".listButton");
-    const editButton = document.querySelectorAll(".edit");
-    const deleteButton = document.querySelectorAll(".delete");
+    reRunCode();
   }
 
   clearInputs();
@@ -93,42 +98,6 @@ function closeModal() {
 }
 
 //this should stay here otherwise it won't work
-const listButton = document.querySelectorAll(".listButton");
-const editButton = document.querySelectorAll(".edit");
-const deleteButton = document.querySelectorAll(".delete");
-
-const editEvent = (item) => {
-  let id = item.dataset.id;
-  let title = item.dataset.title;
-  let description = item.dataset.des;
-
-  showModal();
-  editTodo(title, description, id);
-};
-
-const deleteEvent = (item) => {
-  let id = item.dataset.id;
-
-  deleteTodo(id);
-};
-
-deleteButton.forEach((item) => {
-  item.addEventListener("click", () => {
-    deleteEvent(item);
-  });
-});
-
-editButton.forEach((item) => {
-  item.addEventListener("click", () => {
-    editEvent(item);
-  });
-});
-
-listButton.forEach((item) => {
-  item.addEventListener("click", () => {
-    editEvent(item);
-  });
-});
 
 function clearInputs() {
   // Clear input fields
@@ -146,4 +115,43 @@ function editTodo(title, description, id) {
 
 function deleteTodo(id) {
   console.log(id);
+}
+
+function reRunCode() {
+  const listButton = document.querySelectorAll(".listButton");
+  const editButton = document.querySelectorAll(".edit");
+  const deleteButton = document.querySelectorAll(".delete");
+
+  const editEvent = (item) => {
+    let id = item.dataset.id;
+    let title = item.dataset.title;
+    let description = item.dataset.des;
+
+    showModal();
+    editTodo(title, description, id);
+  };
+
+  const deleteEvent = (item) => {
+    let id = item.dataset.id;
+
+    deleteTodo(id);
+  };
+
+  deleteButton.forEach((item) => {
+    item.addEventListener("click", () => {
+      deleteEvent(item);
+    });
+  });
+
+  editButton.forEach((item) => {
+    item.addEventListener("click", () => {
+      editEvent(item);
+    });
+  });
+
+  listButton.forEach((item) => {
+    item.addEventListener("click", () => {
+      editEvent(item);
+    });
+  });
 }
