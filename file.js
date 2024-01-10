@@ -79,10 +79,9 @@ todoForm.addEventListener("submit", (e) => {
     TodoList.innerHTML = generateList(tempTodo);
 
     reRunCode();
+    clearInputs();
+    closeModal();
   }
-
-  clearInputs();
-  closeModal();
 });
 
 function showModal() {
@@ -114,7 +113,13 @@ function editTodo(title, description, id) {
 // to Delete the item in the existing array by filtering through the id
 
 function deleteTodo(id) {
-  console.log(id);
+  tempTodo.splice(id, 1);
+
+  tableContainer.innerHTML = generateTable(tempTodo);
+
+  TodoList.innerHTML = generateList(tempTodo);
+
+  reRunCode();
 }
 
 function reRunCode() {
