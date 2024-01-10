@@ -10,24 +10,7 @@ const addTodoBtn = document.getElementById("addTodo");
 const modal = document.querySelector(".modal");
 const container = document.querySelector(".container");
 
-let tempTodo = [
-  {
-    title: "first Todo",
-    detail: "checking if this is working",
-  },
-  {
-    title: "second Todo",
-    detail: "checking if this is working",
-  },
-  {
-    title: "third Todo",
-    detail: "checking if this is working",
-  },
-  {
-    title: "Fourth Todo",
-    detail: "checking if this is working",
-  },
-];
+let tempTodo = [];
 const clickHandler = () => {
   console.log("hello");
 };
@@ -53,7 +36,6 @@ function generateList(data) {
   let List = "<ul>";
 
   data.forEach((item, i) => {
-    console.log(item.data);
     List += `<li> <button class="listButton" data-id="${i}" data-title= "${item.title}" data-des="${item.detail}" >${item.title} </button></li>`;
   });
   List += "</ul>";
@@ -64,6 +46,39 @@ function generateList(data) {
 tableContainer.innerHTML = generateTable(tempTodo);
 
 TodoList.innerHTML = generateList(tempTodo);
+
+let todoForm = document.getElementById("Todo");
+
+///adding todo to the list
+
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("Description").value;
+
+  if (title.value == "" || description.value == "") {
+    alert("Ensure you input a value in both fields!");
+  } else {
+    tempTodo = [
+      ...tempTodo,
+      {
+        title: title,
+        detail: description,
+      },
+    ];
+
+    tableContainer.innerHTML = generateTable(tempTodo);
+    TodoList.innerHTML = generateList(tempTodo);
+
+    const listButton = document.querySelectorAll(".listButton");
+    const editButton = document.querySelectorAll(".edit");
+    const deleteButton = document.querySelectorAll(".delete");
+  }
+
+  clearInputs();
+  closeModal();
+});
 
 function showModal() {
   modal.classList.add("showModal");
@@ -120,33 +135,6 @@ function clearInputs() {
   document.getElementById("title").value = "";
   document.getElementById("Description").value = "";
 }
-
-let todoForm = document.getElementById("Todo");
-
-///adding todo to the list
-
-todoForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  let title = document.getElementById("title").value;
-  let description = document.getElementById("Description").value;
-
-  if (title.value == "" || description.value == "") {
-    alert("Ensure you input a value in both fields!");
-  } else {
-    tempTodo = [
-      ...tempTodo,
-      {
-        title: title,
-        description: description,
-      },
-    ];
-    console.log(tempTodo);
-  }
-
-  clearInputs();
-  closeModal();
-});
 
 //to edit the Existing Todo List
 function editTodo(title, description, id) {
